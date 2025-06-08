@@ -17,8 +17,10 @@ Burp Suite extension for FFUF command generation.
 # Modification
 
 Modified burp_ffuf_copy.py
+
 Now access to modification from context menu is available in Repeater, Proxy HTTP History and Logger tabs.
-Also the Host header is added when copying it
+
+Also the Host header is added when the command is executed
 
 # Release info
 
