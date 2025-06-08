@@ -13,7 +13,12 @@ class BurpExtender(IBurpExtender, IContextMenuFactory, IHttpRequestResponse):
 
     def createMenuItems(self, invocation):
         items = []
-        if invocation.getInvocationContext() == invocation.CONTEXT_MESSAGE_EDITOR_REQUEST:
+        context = invocation.getInvocationContext()
+        if context in [
+            invocation.CONTEXT_MESSAGE_EDITOR_REQUEST,
+            invocation.CONTEXT_MESSAGE_VIEWER_REQUEST,
+            invocation.CONTEXT_PROXY_HISTORY
+        ]:
             item = JMenuItem("Copy as FFUF Command", actionPerformed=lambda _: self.copyAsFFUFCommand(invocation))
             items.append(item)
         return items
@@ -29,7 +34,7 @@ class BurpExtender(IBurpExtender, IContextMenuFactory, IHttpRequestResponse):
         http=invocation.getSelectedMessages()[0]
         requestStr = self._helpers.bytesToString(http.getRequest())
         head=requestStr.split('\r\n')[0]
-        headers = {k:v for k,v in list(map(lambda x:[x.split(":")[0],':'.join(x.split(":")[1:])],requestStr.split('\r\n\r\n')[0].split('\r\n')[1:])) if k not in ["Host","Content-Length","Connection","Accept-Encoding","Accept"]}
+        headers = {k:v for k,v in list(map(lambda x:[x.split(":")[0],':'.join(x.split(":")[1:])],requestStr.split('\r\n\r\n')[0].split('\r\n')[1:])) if k not in ["Content-Length","Connection","Accept-Encoding","Accept"]}
         data = requestStr.split('\r\n\r\n')[1].replace("\\","\\\\").replace("\"","\\\"")
         
         url = http.getUrl().toString()
