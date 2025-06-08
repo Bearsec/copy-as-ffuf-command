@@ -25,4 +25,5 @@ Also the Host header is added when the command is executed
 # Release info
 
 This release does not have a BApp signature, so BurpSuite will show a warning when installing it.
+
 The author of the modification is not responsible for its functionality, use at your own risk
