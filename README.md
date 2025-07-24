@@ -16,14 +16,29 @@ Burp Suite extension for FFUF command generation.
 
 # Modification
 
-Modified burp_ffuf_copy.py
+Modified _burp_ffuf_copy.py_
+- Available from context menu in **Repeater**, **Proxy HTTP History**, and **Logger** tabs.
+- Includes the **Host** header in the generated command.
 
-Now access to modification from context menu is available in Repeater, Proxy HTTP History and Logger tabs.
+# Installation
 
-Also the Host header is added when the command is executed
+You can manually install the extension into Burp Suite:
 
-# Release info
+1. **Download the extension file** from the [Releases](https://github.com/Bearsec/copy-as-ffuf-command/releases) section or directly from the link below:
+   👉 [Download copy_as_ffuf_bsmod.bapp](https://github.com/Bearsec/copy-as-ffuf-command/releases/download/v.1.0.0/copy_as_ffuf_bsmod.bapp)
+2. Open **Burp Suite** and go to:
+   ```
+   Extensions → BApp Store → Manual Install (bottom-left)
+   ```
+3. Select the downloaded `.bapp` file to install it.
 
-This release does not have a BApp signature, so BurpSuite will show a warning when installing it.
+## Notes
 
-The author of the modification is not responsible for its functionality, use at your own risk
+- ⚠️ This release **does not have a BApp Store signature**. Burp Suite will show a warning when installing it.
+- ⚠️ Use at your own risk. The author of the modification is not responsible for its functionality.
+
+# Credits
+
+Original project by: [phlmox](https://github.com/phlmox/burp_copy_as_ffuf_command)  
+
+Modified version maintained by: [Bearsec](https://github.com/Bearsec)
